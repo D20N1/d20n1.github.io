@@ -289,6 +289,13 @@
     font-size: 0.67rem; color: var(--ink3); letter-spacing: 0.05em;
   }
 
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
   @media (max-width: 1000px) {
     .project-item { grid-template-columns: 1fr; gap: 1rem; }
     .project-meta { display: flex; gap: 2rem; align-items: center; }
@@ -343,12 +350,12 @@
       I have spent my career inside hospitals — first <strong>designing their electrical and mechanical systems</strong> in BIM, then crossing into the building itself to <strong>automate and maintain the critical equipment</strong> those systems support. From large-scale Revit models to PLC control of operating room environments and hands-on operation of surgical laser systems.
     </p>
     <div class="hero-links">
-      <a href="https://github.com/D20N1" target="_blank" class="hero-link-row">
-        github.com/D20N1
+      <a href="https://www.linkedin.com/in/nikoladanicicd20n1/" target="_blank" class="hero-link-row">
+        linkedin.com/in/nikoladanicicd20n1
         <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
-      <a href="mailto:nikola.danicic@gmail.com" class="hero-link-row">
-        nikola.danicic@gmail.com
+      <a href="https://github.com/D20N1" target="_blank" class="hero-link-row">
+        github.com/D20N1
         <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
@@ -668,6 +675,13 @@
           <div>
             <span class="contact-row-label">Email</span>
             <span class="contact-row-val">nikola.danicic@gmail.com</span>
+          </div>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nikoladanicicd20n1/" target="_blank" class="contact-row">
+          <div>
+            <span class="contact-row-label">LinkedIn</span>
+            <span class="contact-row-val">linkedin.com/in/nikoladanicicd20n1</span>
           </div>
           <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
