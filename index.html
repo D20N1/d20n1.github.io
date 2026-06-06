@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikola Daničić — Electrical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f3ef;
+    --bg2: #edeae4;
+    --bg3: #e3e0d9;
+    --ink: #1a1916;
+    --ink2: #4a4840;
+    --ink3: #8a8680;
+    --rule: #d4d0c8;
+    --accent: #2a4a3a;
+    --accent-light: #e8f0eb;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3.5rem;
+    background: rgba(245,243,239,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 400; font-size: 1rem;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--ink3);
+    text-decoration: none; letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-left {
+    padding: 10rem 3.5rem 4rem;
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-right {
+    padding: 10rem 3.5rem 4rem;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--ink3);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    line-height: 0.95; letter-spacing: -0.03em;
+    margin-bottom: 2.5rem; color: var(--ink);
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: auto; padding-top: 3rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em;
+    text-decoration: none; border: 1px solid var(--ink);
+    color: var(--ink); background: transparent;
+    cursor: pointer; transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn-fill { background: var(--ink); color: var(--bg); }
+  .btn-fill:hover { background: var(--accent); border-color: var(--accent); }
+  .hero-desc {
+    font-size: 1rem; color: var(--ink2);
+    line-height: 1.8; max-width: 420px; margin-bottom: 2.5rem;
+  }
+  .hero-desc strong { color: var(--ink); font-weight: 500; }
+  .hero-links {
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--rule); margin-top: auto;
+  }
+  .hero-link-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 0; border-bottom: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.05em;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .hero-link-row:hover { color: var(--ink); padding-left: 0.4rem; }
+  .hero-link-row svg { width: 13px; height: 13px; stroke: currentColor; flex-shrink: 0; }
+
+  /* SECTIONS */
+  .section { border-bottom: 1px solid var(--rule); }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 5rem 3.5rem; }
+  .section-header {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 3rem; margin-bottom: 3.5rem; align-items: baseline;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--ink3);
+    letter-spacing: 0.1em; text-transform: uppercase; padding-top: 0.4rem;
+  }
+  h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em; line-height: 1.15; color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--accent); }
+
+  /* SKILLS */
+  .skills-table { display: grid; grid-template-columns: 200px 1fr; }
+  .skill-row { display: contents; }
+  .skill-row > * { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+  .skill-row:last-child > * { border-bottom: 1px solid var(--rule); }
+  .skill-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--ink3);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding-right: 2rem; padding-top: 1.4rem;
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .skill-tag {
+    font-size: 0.82rem; color: var(--ink2);
+    background: var(--bg2); border: 1px solid var(--rule);
+    padding: 0.3rem 0.85rem; font-weight: 300;
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  }
+  .cert-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
+  .cert-card:hover { background: var(--bg2); }
+  .cert-issuer {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--ink3);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .cert-name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .cert-desc { font-size: 0.8rem; color: var(--ink3); line-height: 1.6; }
+  .cert-badge {
+    display: inline-block; margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-light);
+    border: 1px solid rgba(42,74,58,0.2); padding: 0.2rem 0.6rem;
+  }
+
+  /* PROJECT GROUP */
+  .project-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--ink);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0;
+  }
+  .project-group + .project-group { margin-top: 3.5rem; }
+
+  /* PROJECT ITEM */
+  .project-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .project-meta { padding-top: 0.3rem; }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--ink3);
+    letter-spacing: 0.08em; margin-bottom: 1.5rem;
+  }
+  .project-links-side { display: flex; flex-direction: column; gap: 0.6rem; }
+  .plink {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--ink3);
+    text-decoration: none; letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 0.35rem;
+    transition: color 0.2s; white-space: nowrap;
+  }
+  .plink:hover { color: var(--ink); }
+  .plink svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+  .project-title {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 1.25rem; color: var(--ink);
+    margin-bottom: 0.6rem; line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.88rem; color: var(--ink2);
+    line-height: 1.75; margin-bottom: 1.25rem; max-width: 600px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .ptag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; color: var(--ink3);
+    background: var(--bg2); border: 1px solid var(--rule);
+    padding: 0.2rem 0.6rem; letter-spacing: 0.04em;
+  }
+
+  /* PROJECT IMAGES */
+  .project-images {
+    display: grid;
+    gap: 6px;
+    margin-top: 0.25rem;
+  }
+  .project-images.cols-2 { grid-template-columns: 1fr 1fr; }
+  .project-images.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .project-images.cols-1 { grid-template-columns: 1fr; }
+  .project-img {
+    width: 100%; aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    background: var(--bg3);
+    border: 1px solid var(--rule);
+    transition: opacity 0.2s;
+  }
+  .project-img:hover { opacity: 0.85; }
+  .project-img.tall { aspect-ratio: 4/3; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .contact-left { padding-right: 3.5rem; border-right: 1px solid var(--rule); }
+  .contact-right { padding-left: 3.5rem; }
+  .contact-heading {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .contact-heading em { font-style: italic; color: var(--accent); }
+  .contact-note { font-size: 0.9rem; color: var(--ink3); line-height: 1.75; margin-bottom: 2.5rem; }
+  .contact-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 0; border-top: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink); transition: padding-left 0.2s;
+  }
+  .contact-row:last-child { border-bottom: 1px solid var(--rule); }
+  .contact-row:hover { padding-left: 0.5rem; }
+  .contact-row-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem; color: var(--ink3);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: block; margin-bottom: 0.2rem;
+  }
+  .contact-row-val { font-size: 0.9rem; color: var(--ink); }
+  .contact-row > svg {
+    width: 14px; height: 14px; stroke: var(--ink3);
+    flex-shrink: 0; transition: transform 0.2s, stroke 0.2s;
+  }
+  .contact-row:hover > svg { stroke: var(--ink); transform: translate(3px,-3px); }
+
+  footer {
+    padding: 1.5rem 3.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.67rem; color: var(--ink3); letter-spacing: 0.05em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
+  @media (max-width: 1000px) {
+    .project-item { grid-template-columns: 1fr; gap: 1rem; }
+    .project-meta { display: flex; gap: 2rem; align-items: center; }
+    .project-num { margin-bottom: 0; }
+  }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 8rem 1.5rem 3rem; }
+    .hero-right { padding: 3rem 1.5rem; }
+    .section-inner { padding: 4rem 1.5rem; }
+    .section-header { grid-template-columns: 1fr; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .skills-table { grid-template-columns: 1fr; }
+    .skill-category { padding-bottom: 0.5rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-left { padding-right: 0; border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 3rem; margin-bottom: 3rem; }
+    .contact-right { padding-left: 0; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.35rem; }
+    .project-images.cols-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    h1 { font-size: 3rem; }
+    .project-images.cols-2,
+    .project-images.cols-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Nikola Daničić</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Electrical Engineer · Novi Sad, Serbia</div>
+    <h1 class="fade-up d2">Nikola<br><em>Daničić</em></h1>
+    <div class="hero-btns fade-up d3">
+      <a href="#projects" class="btn btn-fill">Projects</a>
+      <a href="mailto:nikola.danicic@gmail.com" class="btn">Contact</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up d3">
+    <p class="hero-desc">
+      I have spent my career inside hospitals — first <strong>designing their electrical and mechanical systems</strong> in BIM, then crossing into the building itself to <strong>automate and maintain the critical equipment</strong> those systems support. From large-scale Revit models to PLC control of operating room environments and hands-on operation of surgical laser systems.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/D20N1" target="_blank" class="hero-link-row">
+        github.com/D20N1
+        <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a href="mailto:nikola.danicic@gmail.com" class="hero-link-row">
+        nikola.danicic@gmail.com
+        <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Skills</div>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills-table">
+      <div class="skill-row">
+        <div class="skill-category">Automation & Control</div>
+        <div class="skill-items">
+          <span class="skill-tag">PLC programming (WinLDR)</span>
+          <span class="skill-tag">Modbus TCP/IP</span>
+          <span class="skill-tag">Cascading PID loops</span>
+          <span class="skill-tag">PWM control</span>
+          <span class="skill-tag">HVAC / AHU systems</span>
+          <span class="skill-tag">Feedforward control</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">BIM & CAD</div>
+        <div class="skill-items">
+          <span class="skill-tag">Autodesk Revit</span>
+          <span class="skill-tag">AutoCAD</span>
+          <span class="skill-tag">BIMcollab</span>
+          <span class="skill-tag">DIALux EVO</span>
+          <span class="skill-tag">Leica JetStream</span>
+          <span class="skill-tag">Alpi Caneco</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Software</div>
+        <div class="skill-items">
+          <span class="skill-tag">C# / ObjectARX</span>
+          <span class="skill-tag">C / C++</span>
+          <span class="skill-tag">Docker Compose</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Bash scripting</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Medical Devices</div>
+        <div class="skill-items">
+          <span class="skill-tag">Ziemer ZD8</span>
+          <span class="skill-tag">Alcon EX500</span>
+          <span class="skill-tag">Laser calibration</span>
+          <span class="skill-tag">Optical system maintenance</span>
+          <span class="skill-tag">OR environment compliance</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Embedded & IoT</div>
+        <div class="skill-items">
+          <span class="skill-tag">ESP32 / Arduino</span>
+          <span class="skill-tag">ESP-NOW</span>
+          <span class="skill-tag">MQTT</span>
+          <span class="skill-tag">Home Assistant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section" id="certifications">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Certifications</div>
+      <h2>Formal <em>qualifications</em></h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">Ziemer Ophthalmic Systems</div>
+        <div class="cert-name">Femto LASIK — ZD8 Operator</div>
+        <div class="cert-desc">Operation and maintenance of the Ziemer ZD8 femtosecond laser for flap creation in LASIK refractive surgery. Calibration, pre/post-operative checks, surgical assistance.</div>
+        <span class="cert-badge">Certified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Alcon</div>
+        <div class="cert-name">LASIK — EX500 Operator</div>
+        <div class="cert-desc">Operation and maintenance of the Alcon WaveLight EX500 excimer laser for corneal ablation. Energy calibration, beam profiling, surgical assistance.</div>
+        <span class="cert-badge">Certified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Ziemer Ophthalmic Systems</div>
+        <div class="cert-name">C.L.E.A.R — Operator</div>
+        <div class="cert-desc">Certified operator for Corneal Lenticule Extraction for Advanced Refractive correction on the ZD8. Flapless lens-based refractive surgery.</div>
+        <span class="cert-badge">Certified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Ziemer Ophthalmic Systems</div>
+        <div class="cert-name">FLACS — Femtosecond Laser-Assisted Cataract Surgery</div>
+        <div class="cert-desc">Certified operator for FLACS on the Ziemer ZD8. Capsulotomy, lens fragmentation and corneal incision using femtosecond laser.</div>
+        <span class="cert-badge">Certified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Cambridge Assessment English</div>
+        <div class="cert-name">Cambridge English: First (FCE)</div>
+        <div class="cert-desc">Upper-intermediate English certification at B2 level.</div>
+        <span class="cert-badge">B2</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Projects</div>
+      <h2>Selected work</h2>
+    </div>
+
+    <!-- GROUP 1 -->
+    <div class="project-group">
+      <div class="project-group-label">Hospital & Medical</div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">01</div>
+          <div class="project-links-side"></div>
+        </div>
+        <div>
+          <div class="project-title">Hospital BIM — Electrical & Mechanical Systems</div>
+          <p class="project-desc">BIM design of electrical installations, cable management, ventilation and lighting systems for large-scale hospital and commercial building projects. Low and high voltage, emergency lighting, cable trays. Coordination across disciplines using Leica RTC360 3D laser scanner point cloud data in JetStream Viewer.</p>
+          <div class="project-tags">
+            <span class="ptag">Autodesk Revit</span>
+            <span class="ptag">BIMcollab</span>
+            <span class="ptag">Leica JetStream</span>
+            <span class="ptag">AutoCAD</span>
+            <span class="ptag">DIALux EVO</span>
+            <span class="ptag">Alpi Caneco</span>
+          </div>
+          <div class="project-images cols-2">
+            <img src="building_project.png" alt="Hospital MEP model in Revit" class="project-img" loading="lazy">
+            <img src="JetStream.png" alt="Leica JetStream point cloud coordination" class="project-img" loading="lazy">
+            <img src="revit_render.jpg" alt="Revit lighting render" class="project-img" loading="lazy">
+            <img src="office_project_revit.png" alt="Operating room Revit model" class="project-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">02</div>
+          <div class="project-links-side"></div>
+        </div>
+        <div>
+          <div class="project-title">Operating Room Climate Control System</div>
+          <p class="project-desc">PLC-based HVAC automation for two operating rooms. Two sets of cascading PID loops controlling induction heaters via PWM output, Swegon AHU integrated over Modbus TCP/IP, feedforward loop compensating for DX compressor instability — required for stable temperature and humidity during Femto LASIK and CLEAR refractive surgery procedures.</p>
+          <div class="project-tags">
+            <span class="ptag">PLC / WinLDR</span>
+            <span class="ptag">Modbus TCP/IP</span>
+            <span class="ptag">Cascading PID</span>
+            <span class="ptag">PWM</span>
+            <span class="ptag">Swegon AHU</span>
+            <span class="ptag">Feedforward</span>
+          </div>
+          <div class="project-images cols-2">
+            <img src="caneco.png" alt="Electrical plan" class="project-img" loading="lazy">
+            <img src="caneco3.png" alt="Distribution scheme" class="project-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GROUP 2 -->
+    <div class="project-group">
+      <div class="project-group-label">Automation & Software Tools</div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">03</div>
+          <div class="project-links-side">
+            <a href="https://github.com/D20N1/AutoCADObjectRecognition" class="plink" target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="project-title">AutoCAD Object Recognition Plugin</div>
+          <p class="project-desc">C# ObjectARX plugin that recognizes and counts identical objects in .dwg drawings built from lines. Select any repeating element and the plugin finds all instances across the drawing. Built to replace manual counting on large electrical plans.</p>
+          <div class="project-tags">
+            <span class="ptag">C#</span>
+            <span class="ptag">ObjectARX</span>
+            <span class="ptag">AutoCAD API</span>
+            <span class="ptag">.NET</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">04</div>
+          <div class="project-links-side">
+            <a href="https://github.com/D20N1/Renumbering-data-sockets" class="plink" target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="project-title">Data Socket Renumbering Plugin</div>
+          <p class="project-desc">AutoCAD ObjectARX plugin for sequentially renumbering thousands of data socket labels in user-defined order across large commercial building drawings.</p>
+          <div class="project-tags">
+            <span class="ptag">C#</span>
+            <span class="ptag">ObjectARX</span>
+            <span class="ptag">AutoCAD API</span>
+            <span class="ptag">BIM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">05</div>
+          <div class="project-links-side">
+            <a href="https://github.com/D20N1/Self-Hosted-Infrastructure-Automation-Lab" class="plink" target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="project-title">Self-Hosted Infrastructure Lab</div>
+          <p class="project-desc">Single-node Debian server running containerized services via Docker Compose. Secured remote access through Tailscale WireGuard VPN. Centralized PostgreSQL database, MQTT broker, and Home Assistant. Fully version-controlled configuration.</p>
+          <div class="project-tags">
+            <span class="ptag">Docker Compose</span>
+            <span class="ptag">PostgreSQL</span>
+            <span class="ptag">Tailscale</span>
+            <span class="ptag">Debian Linux</span>
+            <span class="ptag">MQTT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">
+          <div class="project-num">06</div>
+          <div class="project-links-side">
+            <a href="https://github.com/D20N1/smart-home-iot-projects" class="plink" target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="project-title">Smart Home IoT System</div>
+          <p class="project-desc">ESP32-based home automation with Ethernet↔ESP-NOW gateway, MOSFET-controlled blind motors with safety timeouts, battery-powered remote controllers using deep sleep, and full Home Assistant integration over MQTT.</p>
+          <div class="project-tags">
+            <span class="ptag">ESP32</span>
+            <span class="ptag">ESP-NOW</span>
+            <span class="ptag">MQTT</span>
+            <span class="ptag">Home Assistant</span>
+            <span class="ptag">C++</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-label" style="margin-bottom:1rem;">Contact</div>
+        <div class="contact-heading">Open to<br><em>remote</em><br>work.</div>
+        <p class="contact-note">Available for remote positions in hospital infrastructure design, building automation, MEP engineering, and industrial control systems.</p>
+        <a href="mailto:nikola.danicic@gmail.com" class="btn btn-fill" style="display:inline-flex;">Send an email</a>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:nikola.danicic@gmail.com" class="contact-row">
+          <div>
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-val">nikola.danicic@gmail.com</span>
+          </div>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://github.com/D20N1" target="_blank" class="contact-row">
+          <div>
+            <span class="contact-row-label">GitHub</span>
+            <span class="contact-row-val">github.com/D20N1</span>
+          </div>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Nikola Daničić — Electrical Engineer</p>
+  <p>d20n1.github.io</p>
+</footer>
+
+</body>
+</html>
