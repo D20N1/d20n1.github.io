@@ -108,7 +108,7 @@
     text-decoration: none; color: var(--ink2);
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem; letter-spacing: 0.05em;
-    transition: color 0.2s, padding-left 0.2s;
+    transition: color 0.2s, padding-left 0.4rem;
   }
   .hero-link-row:hover { color: var(--ink); padding-left: 0.4rem; }
   .hero-link-row svg { width: 13px; height: 13px; stroke: currentColor; flex-shrink: 0; }
@@ -230,29 +230,28 @@
     padding: 0.2rem 0.6rem; letter-spacing: 0.04em;
   }
 
-  /* PROJECT IMAGES */
+  /* PREMIUM MASONRY GALLERY (2 COLUMNS FOR MAXIMUM IMPACT) */
   .project-images {
-    display: grid;
-    gap: 6px;
-    margin-top: 0.25rem;
-  }
-  .project-images.cols-2 { grid-template-columns: 1fr 1fr; }
-  .project-images.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .project-images.cols-1 { grid-template-columns: 1fr; }
-  .project-img {
-    width: 100%; aspect-ratio: 16/10;
-    object-fit: cover;
     display: block;
-    background: var(--bg3);
+    column-count: 2;
+    column-gap: 12px;
+    margin-top: 0.5rem;
+  }
+  .project-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+    break-inside: avoid;
     border: 1px solid var(--rule);
     transition: opacity 0.2s;
+    object-fit: normal;
   }
   .project-img:hover { opacity: 0.85; }
-  .project-img.tall { aspect-ratio: 4/3; }
 
   /* CONTACT */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
-  .contact-left { padding-right: 3.5rem; border-right: 1px solid var(--rule); }
+  .contact-left { padding-right: 3.5rem; border-right: solid 1px var(--rule); }
   .contact-right { padding-left: 3.5rem; }
   .contact-heading {
     font-family: 'Fraunces', serif; font-weight: 300;
@@ -316,13 +315,11 @@
     .contact-left { padding-right: 0; border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 3rem; margin-bottom: 3rem; }
     .contact-right { padding-left: 0; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.35rem; }
-    .project-images.cols-3 { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
     h1 { font-size: 3rem; }
-    .project-images.cols-2,
-    .project-images.cols-3 { grid-template-columns: 1fr; }
+    .project-images { column-count: 1; }
   }
 </style>
 </head>
@@ -353,12 +350,12 @@
       I have spent my career inside hospitals — first <strong>designing their electrical and mechanical systems</strong> in BIM, then crossing into the building itself to <strong>automate and maintain the critical equipment</strong> those systems support. From large-scale Revit models to PLC control of operating room environments and hands-on operation of surgical laser systems.
     </p>
     <div class="hero-links">
-      <a href="https://github.com/D20N1" target="_blank" class="hero-link-row">
-        github.com/D20N1
+      <a href="https://www.linkedin.com/in/nikoladanicicd20n1/" target="_blank" class="hero-link-row">
+        linkedin.com/in/nikoladanicicd20n1
         <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
-      <a href="mailto:nikola.danicic@gmail.com" class="hero-link-row">
-        nikola.danicic@gmail.com
+      <a href="https://github.com/D20N1" target="_blank" class="hero-link-row">
+        github.com/D20N1
         <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
@@ -498,11 +495,13 @@
             <span class="ptag">DIALux EVO</span>
             <span class="ptag">Alpi Caneco</span>
           </div>
-          <div class="project-images cols-2">
+          <div class="project-images">
             <img src="building_project.png" alt="Hospital MEP model in Revit" class="project-img" loading="lazy">
-            <img src="caneco2.png" alt="3D isometric cable routing in AutoCAD" class="project-img" loading="lazy">
-            <img src="caneco67.png" alt="Electrical single-line distribution scheme" class="project-img" loading="lazy">
-            <img src="JetStream2.png" alt="Leica JetStream point cloud — hospital construction site" class="project-img" loading="lazy">
+            <img src="office_project_revit.png" alt="Hospital room automation wiring plan in Revit" class="project-img" loading="lazy">
+            <img src="office_2.png" alt="Revit hospital installation layout" class="project-img" loading="lazy">
+            <img src="JetStream.png" alt="Leica JetStream point cloud coordination" class="project-img" loading="lazy">
+            <img src="caneco.png" alt="Caneco Low Voltage Calculation Diagram" class="project-img" loading="lazy">
+            <img src="caneco2.png" alt="Electrical single-line distribution scheme" class="project-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -523,11 +522,14 @@
             <span class="ptag">Swegon AHU</span>
             <span class="ptag">Feedforward</span>
           </div>
-          <div class="project-images cols-2">
-            <img src="PLC1.jpg" alt="PLC control panel — automation hardware for operating room climate control" class="project-img" loading="lazy">
-            <img src="PID_tunning.jpg" alt="WinLDR PIDD loop configuration — cascading PID parameter tuning" class="project-img" loading="lazy">
-            <img src="swegon_1.jpg" alt="Swegon GOLD RX/HC air handling unit installed on-site" class="project-img" loading="lazy">
-            <img src="swegon.jpg" alt="Swegon AHU controller — Modbus TCP/IP integration closeup" class="project-img" loading="lazy">
+          <div class="project-images">
+            <img src="PLC1.jpg" alt="PLC Automation Hardware Setup" class="project-img" loading="lazy">
+            <img src="PID_tunning.jpg" alt="PID Loop Tuning and Diagnostics" class="project-img" loading="lazy">
+            <img src="swegon.jpg" alt="Swegon Air Handling Unit Hardware" class="project-img" loading="lazy">
+            <video class="project-img" autoplay loop muted playsinline>
+              <source src="commisioning_progress.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
@@ -538,7 +540,7 @@
           <div class="project-links-side"></div>
         </div>
         <div>
-          <div class="project-title">Clinical Laser Operation &amp; Technical Support</div>
+          <div class="project-title">Clinical Laser Operation & Technical Support</div>
           <p class="project-desc">Hands-on technical engineering support and surgical laser operation within sterile operating room environments. Real-time calibration, optical parameter checks, energy alignment, and beam monitoring during active refractive surgeries (Femto LASIK, CLEAR, FLACS). Ensuring maximum uptime and strict clinical compliance for complex medical systems.</p>
           <div class="project-tags">
             <span class="ptag">Ziemer ZD8</span>
@@ -547,10 +549,13 @@
             <span class="ptag">Clinical Compliance</span>
             <span class="ptag">Surgical Support</span>
           </div>
-          <div class="project-images cols-2">
-            <img src="sala4.jpg" alt="Operating Alcon WaveLight EX500 during refractive surgery" class="project-img" loading="lazy">
-            <img src="sala2.jpg" alt="Surgical laser monitoring during live procedure" class="project-img" loading="lazy">
-            <img src="sala.jpg" alt="Full operating room team during Femto LASIK procedure" class="project-img" loading="lazy">
+          <div class="project-images">
+            <img src="sala.jpg" alt="Live surgical procedure tech support" class="project-img" loading="lazy">
+            <img src="sala2.jpg" alt="Operating room medical laser monitoring" class="project-img" loading="lazy">
+            <img src="EX500.png" alt="Alcon WaveLight EX500 Laser system up close" class="project-img" loading="lazy">
+            <img src="EX500_lens.png" alt="Optical lens sub-system maintenance" class="project-img" loading="lazy">
+            <img src="sala3.jpg" alt="Clinical environment execution" class="project-img" loading="lazy">
+            <img src="sala4.jpg" alt="Laser system diagnostics check" class="project-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -670,6 +675,13 @@
           <div>
             <span class="contact-row-label">Email</span>
             <span class="contact-row-val">nikola.danicic@gmail.com</span>
+          </div>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nikoladanicicd20n1/" target="_blank" class="contact-row">
+          <div>
+            <span class="contact-row-label">LinkedIn</span>
+            <span class="contact-row-val">linkedin.com/in/nikoladanicicd20n1</span>
           </div>
           <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
