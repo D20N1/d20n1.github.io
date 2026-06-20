@@ -230,25 +230,24 @@
     padding: 0.2rem 0.6rem; letter-spacing: 0.04em;
   }
 
-  /* PROJECT IMAGES */
+  /* PROJECT IMAGES — Pinterest/masonry style */
   .project-images {
-    display: grid;
-    gap: 6px;
     margin-top: 0.25rem;
+    column-gap: 6px;
   }
-  .project-images.cols-2 { grid-template-columns: 1fr 1fr; }
-  .project-images.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .project-images.cols-1 { grid-template-columns: 1fr; }
+  .project-images.cols-2 { column-count: 2; }
+  .project-images.cols-3 { column-count: 3; }
+  .project-images.cols-1 { column-count: 1; }
   .project-img {
-    width: 100%; aspect-ratio: 16/10;
-    object-fit: cover;
+    width: 100%;
     display: block;
+    margin-bottom: 6px;
     background: var(--bg3);
     border: 1px solid var(--rule);
     transition: opacity 0.2s;
+    break-inside: avoid;
   }
   .project-img:hover { opacity: 0.85; }
-  .project-img.tall { aspect-ratio: 4/3; }
 
   /* CONTACT */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
@@ -316,13 +315,13 @@
     .contact-left { padding-right: 0; border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 3rem; margin-bottom: 3rem; }
     .contact-right { padding-left: 0; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.35rem; }
-    .project-images.cols-3 { grid-template-columns: 1fr 1fr; }
+    .project-images.cols-3 { column-count: 2; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
     h1 { font-size: 3rem; }
     .project-images.cols-2,
-    .project-images.cols-3 { grid-template-columns: 1fr; }
+    .project-images.cols-3 { column-count: 1; }
   }
 </style>
 </head>
@@ -605,11 +604,6 @@
             <span class="ptag">ObjectARX</span>
             <span class="ptag">AutoCAD API</span>
             <span class="ptag">BIM</span>
-          </div>
-          <div class="project-images cols-3">
-            <img src="socket_holder_family2.png" alt="Data socket Revit family geometry" class="project-img" loading="lazy">
-            <img src="socket_holder_family3.png" alt="Floor-mounted data socket tower — reference product" class="project-img" loading="lazy">
-            <img src="socket_holder_family6.png" alt="Data socket family placed in office model" class="project-img" loading="lazy">
           </div>
         </div>
       </div>
